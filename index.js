@@ -13,6 +13,18 @@ function createGrid(){
             const gridItem = document.createElement("div");
             gridItem.className = "grid-item";
             gridItem.setAttribute("style", "background-color: grey; outline: dotted purple;")
+            
+            // add color-changing event to the new grid-item
+            // gridItem.addEventListener("mouseover", (e) => {
+            //     e.target.style.backgroundColor = "blue";
+            // });
+
+            /* either method works (top or bottom) */
+
+            gridItem.addEventListener("mouseover", () => {
+                gridItem.setAttribute("style", "background-color: blue;");
+            });
+
             gridContainer.appendChild(gridItem);
         }
     }
