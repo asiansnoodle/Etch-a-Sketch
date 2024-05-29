@@ -39,6 +39,12 @@ const adjustGrid = document.querySelector(".grid-adjuster");
 adjustGrid.addEventListener("click", () => {
     let newSize = prompt("Enter new grid size: ");  // prompting for user input
 
+    if (newSize > 100){
+        while (newSize > 100){
+            newSize = prompt("ERROR size too big: ")
+        }
+    }
+
     const gridContainer = document.querySelector("#grid");  // getting refrence to the grid
 
     // delete the current grid that we have
@@ -51,6 +57,22 @@ adjustGrid.addEventListener("click", () => {
 
     // update the grid size to the new and create a new grid
     gridSize = newSize
+    createGrid(gridSize);
+});
+
+const cleanGrid = document.querySelector(".clean-grid");
+cleanGrid.addEventListener("click", () => {
+    const gridContainer = document.querySelector("#grid");  // getting refrence to the grid
+
+    // delete the current grid that we have
+    for (let i=0; i<gridSize; i++){
+        for (let j=0; j<gridSize; j++){
+            const tempNode = document.querySelector(".grid-item")
+            gridContainer.removeChild(tempNode);
+        }
+    }
+
+    // update the grid size to the new and create a new grid
     createGrid(gridSize);
 });
 
